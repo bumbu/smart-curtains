@@ -1,9 +1,8 @@
 <html>
 <head>
- <title>
-  Smart curtains
- </title>
+ <title>Smart curtains</title>
 </head>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <style>
 	h1 {
 		font-family: Roboto, Arial;
@@ -13,7 +12,7 @@
 		margin-bottom: 3em;
 		margin-top: 1em;
 	}
-	
+
 	button {
 		border-radius: 2px;
 		border-style: none;
@@ -40,21 +39,21 @@
     <button id="clockwise-btn">ROTATE CLOCKWISE</button>
     <button id="counter-clockwise-btn">ROTATE COUNTER CLOCKWISE</button>
     <button id="stop-btn">STOP</button>
-        
+
     <script>
         var xhr = new XMLHttpRequest();
         document.getElementById("clockwise-btn").addEventListener("click", function() {
             post(xhr, "/rotate_clockwise")
         }, false);
-        
+
         document.getElementById("stop-btn").addEventListener("click", function() {
             post(xhr, "/stop")
         }, false);
-        
+
         document.getElementById("counter-clockwise-btn").addEventListener("click", function() {
             post(xhr, "/rotate_counter_clockwise")
         }, false);
-        
+
         function post(xhr, url) {
             console.log("POSTing to " + url);
             xhr.open("POST", url, false);
