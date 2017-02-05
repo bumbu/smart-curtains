@@ -1,0 +1,99 @@
+{
+  "project": {
+    "projectSettingsVersion": "3.0.0",
+    "initialAutoPluginCount": 0,
+    "currentBuildConfiguration": null,
+    "projectFiles": {},
+    "projectDirectories": {}
+  },
+  "iot-tab": {
+    "fileStatus": {
+      "README.md": {
+        "previousModTime": 1463223139000,
+        "modified": 1463223139000,
+        "seen": true,
+        "name": "README.md"
+      },
+      "icon.png": {
+        "previousModTime": 1463223139000,
+        "modified": 1463223139000,
+        "seen": true,
+        "name": "icon.png"
+      },
+      "index.html": {
+        "previousModTime": 1480970399000,
+        "modified": 1480970399000,
+        "seen": true,
+        "name": "index.html"
+      },
+      "main.js": {
+        "previousModTime": 1486223434000,
+        "modified": 1486223434000,
+        "seen": true,
+        "name": "main.js"
+      },
+      "package.json": {
+        "previousModTime": 1480965462000,
+        "modified": 1480965462000,
+        "seen": true,
+        "name": "package.json"
+      },
+      "smart_curtains.xdk": {
+        "previousModTime": 1485716776000,
+        "modified": 1485716776000,
+        "seen": true,
+        "name": "smart_curtains.xdk"
+      },
+      "smart_curtains.xdke": {
+        "previousModTime": 1486223253000,
+        "modified": 1486223253000,
+        "seen": true,
+        "name": "smart_curtains.xdke"
+      },
+      "xdk/project-info.json": {
+        "previousModTime": 1479759925000,
+        "modified": 1479759925000,
+        "seen": true,
+        "name": "xdk/project-info.json"
+      },
+      "smart_curtains_2.0.0.xdk_bak": {
+        "previousModTime": 1485716774000,
+        "modified": 1485716774000,
+        "seen": true,
+        "name": "smart_curtains_2.0.0.xdk_bak"
+      },
+      "smart_curtains_2.0.0.xdke_bak": {
+        "previousModTime": 1485716774000,
+        "modified": 1485716774000,
+        "seen": true,
+        "name": "smart_curtains_2.0.0.xdke_bak"
+      }
+    },
+    "boardFileStatus": {
+      "README.md": {
+        "previousModTime": 1486223442873
+      },
+      "icon.png": {
+        "previousModTime": 1486223442873
+      },
+      "index.html": {
+        "previousModTime": 1486223442873
+      },
+      "main.js": {
+        "previousModTime": 1486223442873
+      },
+      "package.json": {
+        "previousModTime": 1486223442873
+      },
+      "xdk/project-info.json": {
+        "previousModTime": 1486223442873
+      },
+      "smart_curtains_2.0.0.xdk_bak": {
+        "previousModTime": 1486223442873
+      }
+    }
+  },
+  "editorTab": {
+    "currentEditorMode": 0
+  }
+}

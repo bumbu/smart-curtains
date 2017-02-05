@@ -1,0 +1,65 @@
+<html>
+<head>
+ <title>
+  Smart curtains
+ </title>
+</head>
+<style>
+	h1 {
+		font-family: Roboto, Arial;
+		font-weight: 300;
+		font-size: 5em;
+		text-align: center;
+		margin-bottom: 3em;
+		margin-top: 1em;
+	}
+	
+	button {
+		border-radius: 2px;
+		border-style: none;
+		font-family: Roboto, Arial;
+		color: #ffffff;
+		font-size: 36px;
+		background: #039be5;
+		padding: 1.4em;
+		text-decoration: none;
+		display: block;
+		margin: 40px auto;
+		width: 800px;
+		letter-spacing: .5px;
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+	}
+
+	button:hover {
+		background: #3cb0fd;
+		text-decoration: none;
+	}
+</style>
+<body>
+		<h1>Curtains control panel</h1>
+    <button id="clockwise-btn">ROTATE CLOCKWISE</button>
+    <button id="counter-clockwise-btn">ROTATE COUNTER CLOCKWISE</button>
+    <button id="stop-btn">STOP</button>
+        
+    <script>
+        var xhr = new XMLHttpRequest();
+        document.getElementById("clockwise-btn").addEventListener("click", function() {
+            post(xhr, "/rotate_clockwise")
+        }, false);
+        
+        document.getElementById("stop-btn").addEventListener("click", function() {
+            post(xhr, "/stop")
+        }, false);
+        
+        document.getElementById("counter-clockwise-btn").addEventListener("click", function() {
+            post(xhr, "/rotate_counter_clockwise")
+        }, false);
+        
+        function post(xhr, url) {
+            console.log("POSTing to " + url);
+            xhr.open("POST", url, false);
+            xhr.send()
+        }
+    </script>
+</body>
+</html>

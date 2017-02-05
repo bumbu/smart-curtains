@@ -1,0 +1,3 @@
+*.xdk_bak
+*.xdke_bak
+node_modules/
