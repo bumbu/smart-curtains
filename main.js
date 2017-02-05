@@ -1,8 +1,14 @@
 /*jslint node:true, vars:true, bitwise:true, unparam:true */
 /*jshint unused:true */
 
- const Controller = require('./src/controller')
- const controller = new Controller()
+const Controller = require('./src/controller')
+const controller = new Controller()
+
+const Timer = require('./src/timer')
+const timer = new Timer(controller)
+
+// At 7 o clock rotate 26 times cw and 26 ccw
+timer.rotateAt(7, [26, -26])
 
 /***************************
         SERVER PART

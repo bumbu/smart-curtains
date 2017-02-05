@@ -22,21 +22,16 @@ class Controller {
   }
 
   rotateCW(times) {
-    if (times === undefined) {
-      times = 1
-    }
-
-    this._sequence.push(times)
-    if (this._sequence.length === 1) this.move()
+    this.rotate([times || 1])
   }
 
   rotateCCW(times) {
-    if (times === undefined) {
-      times = 1
-    }
+    this.rotate([-times || -1])
+  }
 
-    this._sequence.push(-times)
-    if (this._sequence.length === 1) this.move()
+  rotate(timesList) {
+    this._sequence = this._sequence.concat(timesList)
+    this.move()
   }
 
   move() {
