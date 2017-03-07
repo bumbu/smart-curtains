@@ -1,0 +1,7 @@
+{
+  "pubNubPublishKey": "pub-c-xxx",
+  "pubNubSubscribeKey": "sub-c-xxx",
+  "pubNubChannel": "home-data",
+  "ip": "192.168.0.2",
+  "port": 80
+}

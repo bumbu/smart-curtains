@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "finalhandler": "^0.5.1",
+    "network": "^0.3.2",
     "paralleljs": "^0.2.1",
     "router": "^1.1.4"
   }

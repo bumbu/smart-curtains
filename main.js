@@ -1,5 +1,8 @@
 /*jslint node:true, vars:true, bitwise:true, unparam:true */
 /*jshint unused:true */
+"use strict";
+const config = require('./config.json')
+const network = require('network')
 
 const Controller = require('./src/controller')
 const controller = new Controller()
@@ -56,4 +59,14 @@ var server = http.createServer(function(req, res) {
   router(req, res, finalhandler(req, res));
 });
 
-server.listen(1337, '192.168.1.9');
+if ('port' in config) {
+  server.listen(config.port, config.ip);
+} else {
+  network.get_private_ip(function(err, ip) {
+    if (err) {
+      console.log('Can`t get private IP. Try setting an IP from config.')
+    } else {
+      server.listen(config.port, ip);
+    }
+  })
+}
