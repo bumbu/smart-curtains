@@ -4,14 +4,23 @@
 </head>
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <style>
+  body {
+    font-family: Roboto, Arial;
+  }
+
 	h1 {
-		font-family: Roboto, Arial;
 		font-weight: 300;
 		font-size: 5em;
 		text-align: center;
-		margin-bottom: 3em;
+		margin-bottom: 0em;
 		margin-top: 1em;
 	}
+
+  h2 {
+    text-align: center;
+    font-size: 3em;
+    font-weight: 300;
+  }
 
 	button {
 		border-radius: 2px;
@@ -36,6 +45,7 @@
 </style>
 <body>
 		<h1>Curtains control panel</h1>
+    <h2>Current temperature <span id="temperature">loading...</span></h2>
     <button id="clockwise-btn">ROTATE CLOCKWISE</button>
     <button id="counter-clockwise-btn">ROTATE COUNTER CLOCKWISE</button>
     <button id="stop-btn">STOP</button>
@@ -59,6 +69,33 @@
             xhr.open("POST", url, false);
             xhr.send()
         }
+
+        function get(url, cb) {
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+              cb(JSON.parse(xhr.responseText))
+            }
+          }
+          xhr.open('GET', url, true);
+          xhr.send(null);
+        }
+
+        function setTemperature(value) {
+          document.getElementById('temperature').textContent = value
+        }
+
+        function processTemperature() {
+          get('/temperature', function(data) {
+            if (data && data.temperature) {
+              setTemperature(data.temperature)
+            }
+          })
+        }
+
+        processTemperature()
+        setInterval(processTemperature, 10 * 1000) // every 10 sec
+
     </script>
 </body>
 </html>

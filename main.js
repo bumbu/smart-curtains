@@ -13,13 +13,45 @@ const timer = new Timer(controller)
 // At 7 o clock rotate 26 times cw and 26 ccw
 timer.rotateAt(7, [26, -26])
 
+const Temperature = require('./src/temperature')
+const temperature = new Temperature(0)
+
+var http = require('http');
+
+/***************************
+        PUBNUB
+****************************/
+
+const pKey = config.pubNubPublishKey
+const sKey = config.pubNubSubscribeKey
+
+function sendTemperature() {
+  const data = JSON.stringify({temperature: temperature.getCelsius(), time: Date.now()})
+  const url = `/publish/${pKey}/${sKey}/0/${config.pubNubChannel}/0/${data}`
+
+  http.get({
+    host: 'pubsub.pubnub.com',
+    path: url,
+  }, function(response) {
+    var body = '';
+    response.on('data', function(d) {
+        body += d;
+    });
+    response.on('end', function() {
+      // console.log(body)
+    })
+  })
+}
+
+sendTemperature()
+setInterval(sendTemperature, 60 * 1000) // Every minute
+
 /***************************
         SERVER PART
 ****************************/
 
 var fs = require('fs');
 var finalhandler = require('finalhandler');
-var http = require('http');
 var Router = require('router');
 
 // Start by loading in some data
@@ -48,14 +80,19 @@ router.post('/rotate_counter_clockwise', function(req, res) {
 });
 
 router.post('/stop', function(req, res) {
-	console.log('Stop signal received...');
+  console.log('Stop signal received...');
   controller.stop()
+  res.writeHead(200, {'Content-Type': 'text/json'});
+  res.end(JSON.stringify({status: 'OK'}));
+});
+
+router.get('/temperature', function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/json'});
-	res.end(JSON.stringify({status: 'OK'}));
+	res.end(JSON.stringify({temperature: temperature.getCelsius()}));
 });
 
 var server = http.createServer(function(req, res) {
-	console.log('Serving request....');
+  console.log('Serving request....');
   router(req, res, finalhandler(req, res));
 });
 
