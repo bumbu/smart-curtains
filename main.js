@@ -11,7 +11,7 @@ const Timer = require('./src/timer')
 const timer = new Timer(controller)
 
 // At 7 o clock rotate 26 times cw and 26 ccw
-timer.rotateAt(7, [26, -26])
+timer.rotateAt(6, [26, -26])
 
 const Temperature = require('./src/temperature')
 const temperature = new Temperature(0)
