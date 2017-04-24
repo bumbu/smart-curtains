@@ -16,6 +16,9 @@ timer.rotateAt(6, [26, -26])
 const Temperature = require('./src/temperature')
 const temperature = new Temperature(0)
 
+const Relay = require('./src/relay')
+const relay = new Relay(2)
+
 var http = require('http');
 
 /***************************
@@ -55,7 +58,7 @@ var finalhandler = require('finalhandler');
 var Router = require('router');
 
 // Start by loading in some data
-var indexPage = fs.readFileSync('/node_app_slot/index.html');
+var indexPage = fs.readFileSync('./index.html');
 
 var router = Router();
 router.get('/', function (req, res) {
@@ -84,6 +87,13 @@ router.post('/stop', function(req, res) {
   controller.stop()
   res.writeHead(200, {'Content-Type': 'text/json'});
   res.end(JSON.stringify({status: 'OK'}));
+});
+
+router.post('/toggle_relay', function(req, res) {
+  console.log('Toggle relay received...');
+  const status = relay.toggle() ? 'OK' : 'NOT OK'
+  res.writeHead(200, {'Content-Type': 'text/json'});
+  res.end(JSON.stringify({status: status}));
 });
 
 router.get('/temperature', function(req, res) {

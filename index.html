@@ -46,9 +46,10 @@
 <body>
 		<h1>Curtains control panel</h1>
     <h2>Current temperature <span id="temperature">loading...</span></h2>
-    <button id="clockwise-btn">ROTATE CLOCKWISE</button>
-    <button id="counter-clockwise-btn">ROTATE COUNTER CLOCKWISE</button>
-    <button id="stop-btn">STOP</button>
+    <button id="clockwise-btn">Rotate Clockwise</button>
+    <button id="counter-clockwise-btn">Rotate Counter Clockwise</button>
+    <button id="stop-btn">Stop</button>
+    <button id="toggle-relay">Toggle lights</button>
 
     <script>
         var xhr = new XMLHttpRequest();
@@ -62,6 +63,10 @@
 
         document.getElementById("counter-clockwise-btn").addEventListener("click", function() {
             post(xhr, "/rotate_counter_clockwise")
+        }, false);
+
+        document.getElementById("toggle-relay").addEventListener("click", function() {
+            post(xhr, "/toggle_relay")
         }, false);
 
         function post(xhr, url) {
