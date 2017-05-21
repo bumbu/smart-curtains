@@ -106,7 +106,7 @@ var server = http.createServer(function(req, res) {
   router(req, res, finalhandler(req, res));
 });
 
-if ('port' in config) {
+if ('ip' in config) {
   server.listen(config.port, config.ip);
 } else {
   network.get_private_ip(function(err, ip) {
